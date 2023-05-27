@@ -65,6 +65,23 @@ function fetchData(page) {
           // 게시판 데이터 가져오기 실패 시 알림 표시 
         })
     }
+const deleteButton = document.getElementById('btn-delete-a');
+      deleteButton.addEventListener('click', () => deletePosts());
+      function deletePosts() {
+        postIds.forEach((postId) => {
+          fetch(`http://localhost:3000/board?post_id=${postId}`, {
+            method: 'DELETE',
+          })
+            .then((response) => {
+              if (response.ok) {
+                console.log(`Post with post_id ${postId} deleted successfully.`);
+              } else {
+                console.log(`Failed to delete post with post_id ${postId}.`);
+              }
+            })
+            .catch((error) => {
+              console.error(`An error occurred while deleting post with post_id ${postId}.`, error);
+            })
   // fetchData 함수로 첫 화면에 0번부터 10개 먼저 띄우기
   fetchData(0)
      //카테고리 변경 시 해당되는 리스트 뿌리기 
