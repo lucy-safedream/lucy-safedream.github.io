@@ -6,9 +6,9 @@ let page = 0
 
 function fetchData(page) {
   let selectedCategory = categorySelect.value; 
-  const URL = 'https://port-0-safedream-backend-otjl2cli33x5tw.sel4.cloudtype.app';
+  const URL_list = 'https://port-0-safedream-backend-otjl2cli33x5tw.sel4.cloudtype.app';
 
-  fetch(`${URL}/admin/board?category=${selectedCategory}&page=${page}`, {
+  fetch(`${URL_lis}/admin/board?category=${selectedCategory}&page=${page}`, {
     method: 'GET',
     headers: {
       'Authorization': 'Bearer ' + token // 가져온 토큰을 헤더에 추가
@@ -69,7 +69,7 @@ const deleteButton = document.getElementById('btn-delete-a');
       deleteButton.addEventListener('click', () => deletePosts());
       function deletePosts() {
         postIds.forEach((postId) => {
-          fetch(`http://localhost:3000/board?post_id=${postId}`, {
+          fetch(`${URL_lis}/admin/board?post_id=${postId}`, {
             method: 'DELETE',
           })
             .then((response) => {
