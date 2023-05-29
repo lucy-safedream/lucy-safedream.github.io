@@ -2,15 +2,14 @@ async function submitForm() {
   const userid = document.getElementById('userid').value;
   const password = document.getElementById('password').value;
   
-  const URL = 'https://port-0-safedream-backend-otjl2cli33x5tw.sel4.cloudtype.app';
-  console.log(URL);
+  const URL_admin = 'https://port-0-safedream-backend-otjl2cli33x5tw.sel4.cloudtype.app';
 
   const data = {
     userid: userid,
     password: password
   };
 
-  fetch(`${URL}/admin/login`, {
+  fetch(`${URL_admin}/admin/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
