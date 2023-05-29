@@ -131,6 +131,11 @@ function addMember() {
     <input class="addlistinput" type="text" id="username" name="username" required>
     </div>
     <div>
+    <label for="username
+    " class="addlist">비밀번호:</label><br>
+    <input class="addlistinput" type="text" id="password" name="password" required>
+    </div>
+    <div>
     <label for="guardianHp" class="addlist">보호자 휴대폰 번호:</label><br>
     <input class="addlistinput" type="text" id="guardianHp" name="guardianHp" required>
     </div>
@@ -143,7 +148,7 @@ function addMember() {
     `;
     
     function MemberData(memberId) {
-      fetch(`https://port-0-safedream-backend-otjl2cli33x5tw.sel4.cloudtype.app/user/${memberId}`, {
+      fetch(`http://localhost:3000/user/${memberId}`, {
         method: 'GET',
         headers: {
           'Authorization': 'Bearer ' + token // 가져온 토큰을 헤더에 추가
@@ -151,8 +156,9 @@ function addMember() {
       })
       .then(response => response.json())
       .then(data => {
-        const { username, guardianHp, hp } = data;
+        const { username, password, guardianHp, hp } = data;
         updateForm.elements.username.value = username;
+        updateForm.elements.password.value = password,
         updateForm.elements.guardianHp.value = guardianHp;
         updateForm.elements.hp.value = hp;
       })
@@ -165,11 +171,12 @@ function addMember() {
       
       const updatedData = {
       username: updateForm.elements.username.value,
+      password: updateForm.elements.password.value,
       guardianHp: updateForm.elements.guardianHp.value,
       hp: updateForm.elements.hp.value,
     };
     
-    fetch(`https://port-0-safedream-backend-otjl2cli33x5tw.sel4.cloudtype.app/user/${memberId}`, {
+    fetch(`http://localhost:3000/user/${memberId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -194,7 +201,6 @@ function addMember() {
   editContainer.innerHTML = '';
   editContainer.appendChild(updateForm);
 }
-
 
 
 // 이벤트 위임을 사용하여 삭제 버튼 클릭 이벤트 처리
