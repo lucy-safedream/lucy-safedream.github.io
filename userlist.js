@@ -171,7 +171,7 @@ function addMember() {
       event.preventDefault();
       
       const updatedData = {
-      memberId = userid,
+      userid : memberId,
       username: updateForm.elements.username.value,
       password: updateForm.elements.password.value,
       guardianHp: updateForm.elements.guardianHp.value,
