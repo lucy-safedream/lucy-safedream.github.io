@@ -166,6 +166,7 @@ function addMember() {
       .catch(error => console.error('회원 정보 조회 실패:', error));
     }
     MemberData(memberId);// memberId를 이용하여 회원정보내용 불러 오는 함수
+    console.log(userid_get);
     
     updateForm.addEventListener('submit', function(event) {
       event.preventDefault();
