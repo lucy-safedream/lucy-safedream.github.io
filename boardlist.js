@@ -38,18 +38,6 @@ function fetchData(page) {
         checkboxInput.addEventListener('change', () => {
           const post_id = data.result[i].post_id
           postIds.push(post_id)
-        }
-        )
-        tableRow.appendChild(tableData0);
-        tableData1.textContent = data.result[i].category;
-        tableRow.appendChild(tableData1);
-        tableData2.textContent = data.result[i].userid;
-        tableRow.appendChild(tableData2);
-        tableData3.textContent = data.result[i].title;
-        tableData3.addEventListener('click', () => {
-          // 클릭 이벤트 핸들러 내에서 새로운 페이지로 이동하는 코드 작성
-          const post_id = data.result[i].post_id; // 게시판 ID 또는 해당하는 식별자
-          location.href = `./board-read1.html?post_id=${post_id}`; // 새로운 페이지로 이동 및 게시판 ID 전달
           const deleteButton = document.getElementById('btn-delete-a');
           deleteButton.addEventListener('click', () => deletePosts());
           function deletePosts() {
@@ -73,6 +61,19 @@ function fetchData(page) {
             })
             location.href = './board.html';
           }
+        }
+        )
+        tableRow.appendChild(tableData0);
+        tableData1.textContent = data.result[i].category;
+        tableRow.appendChild(tableData1);
+        tableData2.textContent = data.result[i].userid;
+        tableRow.appendChild(tableData2);
+        tableData3.textContent = data.result[i].title;
+        tableData3.addEventListener('click', () => {
+          // 클릭 이벤트 핸들러 내에서 새로운 페이지로 이동하는 코드 작성
+          const post_id = data.result[i].post_id; // 게시판 ID 또는 해당하는 식별자
+          location.href = `./board-read1.html?post_id=${post_id}`; // 새로운 페이지로 이동 및 게시판 ID 전달
+     
         })
         tableData3.style.cursor = 'pointer';
         tableRow.appendChild(tableData3);
