@@ -148,7 +148,7 @@ function addMember() {
     `;
     
     function MemberData(memberId) {
-      fetch(`http://localhost:3000/user/${memberId}`, {
+      fetch(`https://port-0-safedream-backend-otjl2cli33x5tw.sel4.cloudtype.app/user/${memberId}`, {
         method: 'GET',
         headers: {
           'Authorization': 'Bearer ' + token // 가져온 토큰을 헤더에 추가
@@ -176,7 +176,7 @@ function addMember() {
       hp: updateForm.elements.hp.value,
     };
     
-    fetch(`http://localhost:3000/user/${memberId}`, {
+    fetch(`https://port-0-safedream-backend-otjl2cli33x5tw.sel4.cloudtype.app/user/${memberId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
