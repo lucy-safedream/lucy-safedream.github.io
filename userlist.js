@@ -156,7 +156,8 @@ function addMember() {
       })
       .then(response => response.json())
       .then(data => {
-        const { username, password, guardianHp, hp } = data;
+        const { userid, username, password, guardianHp, hp } = data;
+        updateForm.elements.userid.value = userid;
         updateForm.elements.username.value = username;
         updateForm.elements.password.value = password,
         updateForm.elements.guardianHp.value = guardianHp;
@@ -170,6 +171,7 @@ function addMember() {
       event.preventDefault();
       
       const updatedData = {
+      userid: updateForm.elements.userid.value,
       username: updateForm.elements.username.value,
       password: updateForm.elements.password.value,
       guardianHp: updateForm.elements.guardianHp.value,
