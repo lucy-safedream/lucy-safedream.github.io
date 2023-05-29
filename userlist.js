@@ -179,7 +179,7 @@ function addMember() {
       hp: updateForm.elements.hp.value,
     };
     
-    fetch(`https://port-0-safedream-backend-otjl2cli33x5tw.sel4.cloudtype.app/user/${memberId}`, {
+    fetch(`https://port-0-safedream-backend-otjl2cli33x5tw.sel4.cloudtype.app/user`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
