@@ -159,7 +159,7 @@ function addMember() {
         const { userid, username, password, guardianHp, hp } = data;
         memberId = userid;
         updateForm.elements.username.value = username;
-        updateForm.elements.password.value = password,
+        updateForm.elements.password.value = password;
         updateForm.elements.guardianHp.value = guardianHp;
         updateForm.elements.hp.value = hp;
       })
@@ -171,7 +171,7 @@ function addMember() {
       event.preventDefault();
       
       const updatedData = {
-      memberId = userid;
+      memberId = userid,
       username: updateForm.elements.username.value,
       password: updateForm.elements.password.value,
       guardianHp: updateForm.elements.guardianHp.value,
