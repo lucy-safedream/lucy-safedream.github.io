@@ -157,7 +157,7 @@ function addMember() {
       .then(response => response.json())
       .then(data => {
         const { userid, username, password, guardianHp, hp } = data;
-        updateForm.elements.userid.value = userid;
+        memberId = userid;
         updateForm.elements.username.value = username;
         updateForm.elements.password.value = password,
         updateForm.elements.guardianHp.value = guardianHp;
