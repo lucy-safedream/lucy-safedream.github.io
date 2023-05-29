@@ -42,7 +42,7 @@ function fetchData(page) {
           deleteButton.addEventListener('click', () => deletePosts());
           function deletePosts() {
             postIds.forEach((postId) => {
-              fetch(`http://localhost:3000/board?post_id=${postId}`, {
+              fetch(`${URL_list}/admin/board?post_id=${postId}`, {
                 method: 'DELETE',
                 headers: {
                   'Authorization': 'Bearer ' + token // 가져온 토큰을 헤더에 추가
