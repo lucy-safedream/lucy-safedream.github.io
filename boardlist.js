@@ -50,7 +50,29 @@ function fetchData(page) {
           // 클릭 이벤트 핸들러 내에서 새로운 페이지로 이동하는 코드 작성
           const post_id = data.result[i].post_id; // 게시판 ID 또는 해당하는 식별자
           location.href = `./board-read1.html?post_id=${post_id}`; // 새로운 페이지로 이동 및 게시판 ID 전달
-
+          const deleteButton = document.getElementById('btn-delete-a');
+          deleteButton.addEventListener('click', () => deletePosts());
+          function deletePosts() {
+            postIds.forEach((postId) => {
+              fetch(`http://localhost:3000/board?post_id=${postId}`, {
+                method: 'DELETE',
+                headers: {
+                  'Authorization': 'Bearer ' + token // 가져온 토큰을 헤더에 추가
+                }
+              })
+                .then((response) => {
+                  if (response.ok) {
+                    console.log(`Post with post_id ${postId} deleted successfully.`);
+                  } else {
+                    console.log(`Failed to delete post with post_id ${postId}.`);
+                  }
+                })
+                .catch((error) => {
+                  console.error(`An error occurred while deleting post with post_id ${postId}.`, error);
+                });
+            })
+            location.href = './board.html';
+          }
         })
         tableData3.style.cursor = 'pointer';
         tableRow.appendChild(tableData3);
@@ -65,23 +87,7 @@ function fetchData(page) {
           // 게시판 데이터 가져오기 실패 시 알림 표시 
         })
     }
-const deleteButton = document.getElementById('btn-delete-a');
-      deleteButton.addEventListener('click', () => deletePosts());
-      function deletePosts() {
-        postIds.forEach((postId) => {
-          fetch(`${URL_lis}/admin/board?post_id=${postId}`, {
-            method: 'DELETE',
-          })
-            .then((response) => {
-              if (response.ok) {
-                console.log(`Post with post_id ${postId} deleted successfully.`);
-              } else {
-                console.log(`Failed to delete post with post_id ${postId}.`);
-              }
-            })
-            .catch((error) => {
-              console.error(`An error occurred while deleting post with post_id ${postId}.`, error);
-            })
+
   // fetchData 함수로 첫 화면에 0번부터 10개 먼저 띄우기
   fetchData(0)
      //카테고리 변경 시 해당되는 리스트 뿌리기 
